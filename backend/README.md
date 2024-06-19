@@ -2,7 +2,7 @@
 
 ### Step 1: 🚀 Initial Setup
 
-- Clone the repository: `git clone https://github.com/anhhao92/node-server.git`
+- Clone the repository: `git clone git@github.com:anhhao92/scentronix-test.git`
 - Navigate: `cd backend`
 - Install dependencies: `npm install`
 

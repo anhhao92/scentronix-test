@@ -2,7 +2,7 @@
 
 ### Step 1: 🚀 Initial Setup
 
-- Clone the repository: `git clone https://github.com/anhhao92/scentronix-test.git`
+- Clone the repository: `git clone git@github.com:anhhao92/scentronix-test.git`
 - Navigate: `cd design-system-component`
 - Install dependencies: `npm install`
 
