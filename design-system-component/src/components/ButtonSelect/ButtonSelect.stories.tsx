@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
 
 import { ButtonSelect } from ".";
 
@@ -51,8 +52,13 @@ export const Default: Story = {
   ),
 };
 
-export const Primary: Story = {
+export const RightAligment: Story = {
   args: {
     label: "Buy",
   },
+  render: (args) => (
+    <Stack direction="row-reverse">
+      <ButtonSelect {...args} label="Buy" />
+    </Stack>
+  ),
 };

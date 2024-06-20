@@ -92,16 +92,33 @@ const SelectItem = ({ label, price, tag, description }: ButtonOption) => {
 
 const ButtonSelect = ({ options, label }: ButtonSelectProps) => {
   const [open, setOpen] = React.useState(false);
-  const [position, setPosition] = React.useState({ left: 0, top: 0 });
-  const ref = React.useRef<HTMLButtonElement>(null);
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const stackRef = React.useRef<HTMLDivElement>(null);
+
+  const getStackPosition = () => {
+    const btnPos = btnRef.current?.getBoundingClientRect();
+    const stackPos = stackRef.current?.getBoundingClientRect();
+    if (!btnPos || !stackPos) {
+      return { left: 0, top: 0 };
+    }
+    if (btnPos.left > window.innerWidth / 2) {
+      return { left: btnPos.left - stackPos.width - 8, top: btnPos.top };
+    }
+    if (btnPos.top < stackPos.height / 2) {
+      return { left: btnPos.left + 48, top: btnPos.top };
+    }
+    return { left: btnPos.left + 48 };
+  };
+
+  const getCloseButtonPosition = () => {
+    const btnPos = btnRef.current?.getBoundingClientRect();
+    if (btnPos) {
+      return { left: btnPos.left, top: btnPos.top };
+    }
+    return { left: 0, top: 0 };
+  };
 
   const handleClickOpen = () => {
-    const pos = ref.current?.getBoundingClientRect();
-    console.log(pos);
-
-    if (pos) {
-      setPosition({ left: pos.left, top: pos.top });
-    }
     setOpen(true);
   };
 
@@ -112,7 +129,7 @@ const ButtonSelect = ({ options, label }: ButtonSelectProps) => {
     <>
       <ActionButton
         sx={{ visibility: open ? "hidden" : "visible" }}
-        ref={ref}
+        ref={btnRef}
         variant="contained"
         startIcon={<AddShoppingCartIcon />}
         onClick={handleClickOpen}
@@ -121,12 +138,12 @@ const ButtonSelect = ({ options, label }: ButtonSelectProps) => {
       </ActionButton>
 
       <Backdrop open={open} onClick={handleClose} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Stack spacing={1}>
+        <Stack ref={stackRef} spacing={1} sx={{ position: "absolute", ...getStackPosition() }}>
           {options.map((item) => (
             <SelectItem key={item.label} {...item} />
           ))}
         </Stack>
-        <Fab size="small" sx={{ backgroundColor: "white", position: "absolute", ...position }}>
+        <Fab size="small" sx={{ backgroundColor: "white", position: "absolute", ...getCloseButtonPosition() }}>
           <CloseIcon fontSize="small" />
         </Fab>
       </Backdrop>
