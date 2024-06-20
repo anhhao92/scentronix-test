@@ -43,11 +43,11 @@ export const Default: Story = {
   render: (args) => (
     <>
       <Stack direction="row">
-        <ButtonSelect {...args} label="Buy" />
+        <ButtonSelect {...args} />
       </Stack>
       <Container sx={{ height: 300 }} />
       <Stack direction="row">
-        <ButtonSelect {...args} label="Buy" />
+        <ButtonSelect {...args} />
       </Stack>
     </>
   ),
@@ -60,11 +60,11 @@ export const RightAligment: Story = {
   render: (args) => (
     <>
       <Stack direction="row-reverse">
-        <ButtonSelect {...args} label="Buy" />
+        <ButtonSelect {...args} />
       </Stack>
-      <Container sx={{ height: 300 }} />
+      <Container sx={{ height: 200 }} />
       <Stack direction="row-reverse">
-        <ButtonSelect {...args} label="Buy" />
+        <ButtonSelect {...args} />
       </Stack>
     </>
   ),

@@ -101,7 +101,7 @@ const ButtonSelect = ({ options, label }: ButtonSelectProps) => {
     if (!btnPos || !stackPos) {
       return { left: 0, top: 0 };
     }
-    const top = btnPos.top < window.innerHeight / 2 ? btnPos.top : "auto";
+    const top = btnPos.top + stackPos.height < window.innerHeight ? btnPos.top : "auto";
     if (btnPos.left > window.innerWidth / 2) {
       return { left: btnPos.left - stackPos.width - 8, top };
     }
