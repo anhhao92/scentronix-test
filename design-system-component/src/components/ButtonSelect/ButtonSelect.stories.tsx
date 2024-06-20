@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 
 import { ButtonSelect } from ".";
+import Container from "@mui/material/Container";
 
 const meta = {
   title: "Design System/SelectButton",
@@ -41,14 +41,15 @@ export const Default: Story = {
     label: "Buy",
   },
   render: (args) => (
-    <Grid container justifyContent="flex-start" sx={{ mt: 2, height: 400 }}>
-      <Grid item xs={12}>
+    <>
+      <Stack direction="row">
         <ButtonSelect {...args} label="Buy" />
-      </Grid>
-      <Grid item xs={12} alignSelf="end">
+      </Stack>
+      <Container sx={{ height: 300 }} />
+      <Stack direction="row">
         <ButtonSelect {...args} label="Buy" />
-      </Grid>
-    </Grid>
+      </Stack>
+    </>
   ),
 };
 
@@ -57,8 +58,14 @@ export const RightAligment: Story = {
     label: "Buy",
   },
   render: (args) => (
-    <Stack direction="row-reverse">
-      <ButtonSelect {...args} label="Buy" />
-    </Stack>
+    <>
+      <Stack direction="row-reverse">
+        <ButtonSelect {...args} label="Buy" />
+      </Stack>
+      <Container sx={{ height: 300 }} />
+      <Stack direction="row-reverse">
+        <ButtonSelect {...args} label="Buy" />
+      </Stack>
+    </>
   ),
 };

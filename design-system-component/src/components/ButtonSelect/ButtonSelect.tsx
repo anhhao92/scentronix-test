@@ -101,13 +101,11 @@ const ButtonSelect = ({ options, label }: ButtonSelectProps) => {
     if (!btnPos || !stackPos) {
       return { left: 0, top: 0 };
     }
+    const top = btnPos.top < window.innerHeight / 2 ? btnPos.top : "auto";
     if (btnPos.left > window.innerWidth / 2) {
-      return { left: btnPos.left - stackPos.width - 8, top: btnPos.top };
+      return { left: btnPos.left - stackPos.width - 8, top };
     }
-    if (btnPos.top < stackPos.height / 2) {
-      return { left: btnPos.left + 48, top: btnPos.top };
-    }
-    return { left: btnPos.left + 48 };
+    return { left: btnPos.left + 48, top };
   };
 
   const getCloseButtonPosition = () => {
